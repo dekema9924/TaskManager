@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import ShowTask from './ShowTask'
 import {TaskContext} from '../Context/TaskContext'
+import TaskHeader from './TaskHeader';
 
 function AddTask() {
-  const [isTask, setTask] = useState(["drive", "walk"]);
+  const [isTask, setTask] = useState(["drive", "walk", "sleep", "cook", "School"]);
   const [newtask, setNewTask] = useState("");
+  const totalTask = isTask.length;
 
   const HandleSubmit=(e)=>{
     e.preventDefault();
@@ -13,6 +15,7 @@ function AddTask() {
     setNewTask("")
    }
   }
+
 
   return (
    <>
@@ -23,8 +26,9 @@ function AddTask() {
         </form>
     </div>
    
-   <TaskContext.Provider value={{isTask, setTask, setNewTask}}>
+   <TaskContext.Provider value={{isTask, setTask, setNewTask, totalTask}}>
        <ShowTask/>
+       <TaskHeader/>
    </TaskContext.Provider>
   
    
